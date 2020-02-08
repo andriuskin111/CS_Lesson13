@@ -24,12 +24,13 @@ namespace CompanyManager
             Console.WriteLine("\n");
 
             CompanyRepository companyRepository = new CompanyRepository();
+            RaportGenerator raportGenerator = new RaportGenerator(companyRepository);
             List<Company> companies = companyRepository.Retrieve();
 
             ShowCompanies(companies);
-
             ShowCompanies(companyRepository.Retrieve(3));
 
+            Console.WriteLine(raportGenerator.GenerateCompaniesRaport());
 
             Console.ReadLine();
         }

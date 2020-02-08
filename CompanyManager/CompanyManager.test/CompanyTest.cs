@@ -12,10 +12,7 @@ namespace CompanyManager.test
         public void TestGetPhoneNumbersCount()
         {
             // Arrange
-            Company company = new Company(1, "UAB EAMV", false);
-            company.PhoneNumbers.Add("86555555");
-            company.PhoneNumbers.Add("86222222");
-            company.PhoneNumbers.Add("86333333");
+            Company company = new Company(1, "UAB EAMV", false, new List<string> { "86555555", "86222222" });
 
             int expected = 3;
 
