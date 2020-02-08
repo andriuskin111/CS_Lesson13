@@ -8,7 +8,7 @@ namespace CompanyManagerBusinesLogicLayer
 {
     public class RaportGenerator
     {
-        CompanyRepository _companyRepository;
+        private CompanyRepository _companyRepository;
 
         public RaportGenerator(CompanyRepository companyRepository)
         {
@@ -23,7 +23,8 @@ namespace CompanyManagerBusinesLogicLayer
             foreach (Company company in companies)
             {
                 result += "Company Id: " + company.CompanyId + ", Name: " + company.CompanyName +
-                    ", NCO = " + company.NonCommercialOrganisation + ", Phone Numbers(" + company.PhoneNumbers.Count + "): ";
+                    ", NCO = " + company.NonCommercialOrganisation +
+                    ", Phone Numbers(" + company.PhoneNumbers.Count + "): ";
 
                 foreach (var number in company.PhoneNumbers)
                 {
