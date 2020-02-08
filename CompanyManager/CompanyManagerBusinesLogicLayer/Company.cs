@@ -18,5 +18,10 @@ namespace CompanyManagerBusinesLogicLayer
             CompanyName = companyName;
             PhoneNumbers = new List<string>();
         }
+
+        public int GetPhoneNumbersCount()
+        {
+            return PhoneNumbers.Count;
+        }
     }
 }
