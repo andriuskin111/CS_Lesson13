@@ -11,20 +11,55 @@ namespace CompanyManager
     {
         static void Main(string[] args)
         {
-            Company company = new Company(1, "UAB EAMV");
-            company.PhoneNumbers.Add("86555555");
-            company.PhoneNumbers.Add("86222222");
-            company.PhoneNumbers.Add("86333333");
-
+            Company company = new Company(1, "UAB EAMV", false, new List<string> { "86555555", "86222222" });
+ 
             Console.Write($"Company Id: {company.CompanyId}, " +
-                $"Name: {company.CompanyName}");
+                $"Name: {company.CompanyName}, Phone Numbers ({company.PhoneNumbers.Count})");
 
             foreach (var number in company.PhoneNumbers)
             {
                 Console.Write($", {number}");
             }
 
+            Console.WriteLine("\n");
+
+            CompanyRepository companyRepository = new CompanyRepository();
+            List<Company> companies = companyRepository.Retrieve();
+
+            ShowCompanies(companies);
+
+            ShowCompanies(companyRepository.Retrieve(3));
+
+
             Console.ReadLine();
+        }
+
+        static void ShowCompanies(Company company)
+        {
+            Console.Write($"Company selected Id: {company.CompanyId}, Name: {company.CompanyName}, " +
+                $"NCO = {company.NonCommercialOrganisation}, Phone Numbers({company.PhoneNumbers.Count}): ");
+
+            foreach (var number in company.PhoneNumbers)
+            {
+                Console.Write($"{number}; ");
+            }
+
+            Console.WriteLine("\n");
+        }
+        static void ShowCompanies(List<Company> companies)
+        {
+            foreach (var company in companies)
+            {
+                Console.Write($"Company Id: {company.CompanyId}, Name: {company.CompanyName}, " +
+                    $"NCO = {company.NonCommercialOrganisation}, Phone Numbers({company.PhoneNumbers.Count}): ");
+
+                foreach (var number in company.PhoneNumbers)
+                {
+                    Console.Write($"{number}; ");
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }

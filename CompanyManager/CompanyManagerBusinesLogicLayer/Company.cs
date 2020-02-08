@@ -10,13 +10,16 @@ namespace CompanyManagerBusinesLogicLayer
     {
         public int CompanyId { get; private set; }
         public string CompanyName { get; private set; }
-        public List<string> PhoneNumbers;
+        public bool NonCommercialOrganisation { get; private set; }
+        
+        public List<string> PhoneNumbers { get; private set; }
 
-        public Company(int companyId, string companyName)
+        public Company(int companyId, string companyName, bool nonCommercialOrganisation, List<string> phoneNumbers)
         {
             CompanyId = companyId;
             CompanyName = companyName;
-            PhoneNumbers = new List<string>();
+            NonCommercialOrganisation = nonCommercialOrganisation;
+            PhoneNumbers = phoneNumbers;
         }
 
         public int GetPhoneNumbersCount()
